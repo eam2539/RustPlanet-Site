@@ -6,34 +6,41 @@ hero:
   text: Cross-Platform RTS Game
   tagline: A modern real-time strategy game engine built with LibGDX
   image:
-    src: /logo.svg
+    light: /logo.svg
+    dark: /logo-dark.svg
     alt: RustPlanet Logo
     style: "width: 100%; height: auto;"
   actions:
     - theme: brand
       text: Get Started
-      link: /en/tutorial/getting-started
+      link: /tutorial/getting-started
     - theme: alt
       text: View on GitHub
       link: https://github.com/eam2539/RustPlanet
 
 features:
-  - icon: 🎮
+  - icon:
+      src: /icons/platform.svg
     title: Cross-Platform Support
     details: Run on multiple platforms including Windows, Linux, macOS, and Android
-  - icon: 🛠️
+  - icon:
+      src: /icons/modding.svg
     title: Modding System
     details: Lua-based modding system with TOML configuration for easy customization
-  - icon: 🌐
+  - icon:
+      src: /icons/multiplayer.svg
     title: P2P Multiplayer
     details: Decentralized P2P networking system for true multiplayer experience
-  - icon: 🧩
+  - icon:
+      src: /icons/rw-mod.svg
     title: RW Mod Support
     details: Compatible with classic game mod formats for easy content migration
-  - icon: 🚀
+  - icon:
+      src: /icons/steam.svg
     title: Steam Integration
     details: Built-in Steam platform support for community and multiplayer features
-  - icon: 📦
+  - icon:
+      src: /icons/physics.svg
     title: Box2D Physics
     details: Advanced physics engine with realistic collision detection and simulation
 

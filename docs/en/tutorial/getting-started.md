@@ -25,7 +25,7 @@ RustPlanet supports the following platforms:
 
 RustPlanet is free on Android with no additional cost.
 
-1. Download RustPlanet from Google Play
+1. Download RustPlanet from Github Releases: [GitHub Releases](https://github.com/eam2539/RustPlanet-Site/releases)
 2. Install the APK on your Android device
 3. Launch RustPlanet from your app list
 

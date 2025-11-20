@@ -25,7 +25,7 @@ RustPlanet 支持以下平台：
 
 RustPlanet 在Android平台免费提供，无需任何费用。
 
-1. 从 Google Play 下载 RustPlanet
+1. 从 [GitHub Releases](https://github.com/eam2539/RustPlanet-Site/releases) 下载 RustPlanet
 2. 在 Android 设备上安装 APK
 3. 从应用列表启动 RustPlanet
 

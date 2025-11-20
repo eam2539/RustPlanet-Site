@@ -1,0 +1,17 @@
+[build]
+  # Build command for the VitePress site
+  command = "npm run docs:build"
+  # VitePress 的默认输出目录
+  publish = "docs/.vitepress/dist"
+
+[dev]
+  # Local dev command (used with Netlify Dev if desired)
+  command = "npm run docs:dev"
+  port = 5173
+
+[[redirects]]
+  # SPA fallback：将未命中路径重写到 index.html（状态 200）
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false

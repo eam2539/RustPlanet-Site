@@ -11,7 +11,6 @@
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #3178c6, #65ade0);
 }
 
-
 .dark {
   --vp-c-bg: #1a1a1a;
   --vp-c-bg-alt: #242424;
@@ -26,61 +25,189 @@
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #00d4ff, #0099ff);
 }
 
-.VPNavBar .logo img {
-  height: 32px;
+/* 全局背景 SVG 纹理 */
+html {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233178c6' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-.dark .VPNavBar .logo img[src*="logo-dark"] {
-  display: block;
+.dark html {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2365ade0' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-.VPNavBar .logo img[src*="logo-dark"] {
-  display: none;
-}
-
-.dark .VPNavBar .logo img:not([src*="logo-dark"]) {
-  display: none;
-}
-
-/* Hide header (top-left) logo entirely per user request */
-.VPNavBar .logo {
-  display: none !important;
-}
-
-/* Hero image: hide the default <img> and use background images so we can switch
-   between day/night logos using CSS variables. This avoids changing the markup. */
+/* Hero 图片动画 */
 .VPHome .VPHero .image img {
-  display: none !important;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+  margin-top: -100px;
 }
 
-.VPHome .VPHero .image {
-  width: 200px;
-  height: 120px;
+.dark .VPHome .VPHero .image img {
+  filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.2));
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* 按钮美化 */
+.VPButton.brand {
+  background-image: linear-gradient(to right, var(--vp-c-brand), var(--vp-c-brand-light));
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.VPButton.brand:hover {
+  background-image: linear-gradient(to right, var(--vp-c-brand-light), var(--vp-c-brand-lighter));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(49, 120, 198, 0.3);
+}
+
+/* 特性卡片美化 */
+.VPFeature {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.VPFeature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--vp-c-brand-light);
+  background-color: var(--vp-c-bg-soft);
+}
+
+.dark .VPFeature:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background-color: var(--vp-c-bg-alt);
+}
+
+/* 导航栏毛玻璃效果 */
+.VPNavBar {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px);
+}
+
+.dark .VPNavBar {
+  background-color: rgba(26, 26, 26, 0.8) !important;
+}
+
+/* 特性图标动画 */
+.VPFeature .icon {
+  transition: transform 0.3s ease;
+}
+
+.VPFeature:hover .icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* 特性图标 SVG 颜色适配 */
+.VPFeature .icon img {
+  width: 48px;
+  height: 48px;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.dark .VPFeature .icon img {
+  /* 深色模式下，让蓝色图标变亮，接近青色 */
+  filter: brightness(1.5) hue-rotate(-10deg) drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
+}
+
+.VPFeature:hover .icon img {
+  /* 悬停时增加发光和立体感 */
+  filter: brightness(1.2) drop-shadow(0 5px 15px rgba(49, 120, 198, 0.4));
+  transform: scale(1.1) translateY(-5px);
+}
+
+.dark .VPFeature:hover .icon img {
+  filter: brightness(1.8) drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+}
+
+/* 代码块美化 */
+.vp-doc div[class*='language-'] {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.vp-doc div[class*='language-']:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 链接下划线动画 */
+.vp-doc a {
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(var(--vp-c-brand), var(--vp-c-brand));
+  background-position: 0% 100%;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  transition: filter 0.25s ease, background-image 0.25s ease;
-  margin: 0 auto 1.2rem;
+  background-size: 0% 2px;
+  transition: background-size 0.3s;
 }
 
-:root {
-  --rp-hero-logo-day: url('/logo.png');
-  --rp-hero-logo-night: url('/logo_night.png');
+.vp-doc a:hover {
+  background-size: 100% 2px;
+  color: var(--vp-c-brand);
 }
 
-.VPHome .VPHero .image {
-  background-image: var(--rp-hero-logo-day);
+/* 表格美化 */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.dark .VPHome .VPHero .image {
-  background-image: var(--rp-hero-logo-night);
+.vp-doc table tr {
+  transition: background-color 0.2s;
 }
 
-/* 自定义组件样式 */
+.vp-doc table tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc table tr:hover {
+  background-color: var(--vp-c-bg-alt);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-brand-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand);
+}
+
+/* 自定义块样式 */
 .custom-block {
   border-radius: 8px;
   padding: 16px;
   margin: 16px 0;
+  transition: transform 0.2s;
+}
+
+.custom-block:hover {
+  transform: scale(1.01);
 }
 
 .custom-block.tip {
@@ -96,15 +223,6 @@
 .custom-block.danger {
   background-color: rgba(237, 87, 87, 0.1);
   border-color: #ed5757;
-}
-
-/* Hero image styling */
-.VPHome .VPHero .image {
-  transition: filter 0.3s ease;
-}
-
-.dark .VPHome .VPHero .image {
-  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
 }
 
 /* 响应式布局调整 */
